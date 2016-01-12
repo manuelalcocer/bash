@@ -1,0 +1,9 @@
+[Unit]
+Description=Chequea las conexiones para montar o desmontar los recursos NFS
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timer.target
+
