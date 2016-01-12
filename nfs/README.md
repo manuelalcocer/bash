@@ -1,6 +1,6 @@
 # Uso de los servicios y del script
 
-- Copiar 'auto_share' a __/usr/local/bin/auto_share__.
+- Copiar __auto_share.sh__ a __/usr/local/bin/auto_share__.
 
 - Copiar el temporizador y el servicio a __/etc/systemd/system/multi-user.taget.wants/__
 
@@ -8,6 +8,8 @@
 
 ~~~
 # systemctl daemon-reload
+# systemctl enable auto_share.timer
+# systemctl start auto_share.timer
 ~~~
 
 * Con esto se consigue que cada minuto se comprueben los recursos compartidos de NFS, en caso de no estar disponibles, los desmonta evitando un cuelgue molesto, sobre todo si se usa la opción de montaje 'hardlink'.
