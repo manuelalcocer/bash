@@ -9,8 +9,7 @@ for montaje in $montajes; do
                     | grep -Ei "$(cut -d: -f2 <<< ${montaje})" ; 
                 } &> /dev/null || umount -l -f $(cut -d: -f3 <<< ${montaje}) ; 
         } || {
-                {
-                showmount -e $(cut -d: -f1 <<< ${montaje}) \
+                { showmount -e $(cut -d: -f1 <<< ${montaje}) \
                     | grep -Ei "$(cut -d: -f2 <<< ${montaje})" ;
                 } &> /dev/null && mount $(cut -d: -f3 <<< ${montaje}) ; 
             }
