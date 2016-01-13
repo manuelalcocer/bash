@@ -1,5 +1,5 @@
 [Unit]
-Description=Chequea las conexiones para montar o desmontar los recursos NFS
+Description=Run auto_share.service every minute
 
 [Timer]
 OnCalendar=*-*-* *:*:00
