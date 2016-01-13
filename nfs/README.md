@@ -1,10 +1,10 @@
-# Uso de los servicios y del script
+# Using services and bash script
 
-- Copiar __auto_share.sh__ a __/usr/local/bin/auto_share__.
+- Copy __auto_share.sh__ to __/usr/local/bin/auto_share__.
 
-- Copiar el temporizador y el servicio a __/etc/systemd/system/multi-user.taget.wants/__
+- Copy timer and service to __/etc/systemd/system/multi-user.taget.wants/__
 
-- Ejecutar:
+- Run:
 
 ~~~
 # systemctl daemon-reload
@@ -12,17 +12,18 @@
 # systemctl start auto_share.timer
 ~~~
 
-* Con esto se consigue que cada minuto se comprueben los recursos compartidos de NFS, en caso de no estar disponibles, los desmonta evitando un cuelgue molesto, sobre todo si se usa la opción de montaje 'hardlink'.
+* Every minute all NFS shared resources defined on FSTAB will be checked: if not available will be unmounted, if available and not mounted will be mounted, otherwise do nothing.
 
 ## NetworkManager-dispatcher
 
-- Si NetworkManager gestiona la interfaz de red:
+- If NetworkManager manages your network interface(s):
 
 ~~~
-# cp auto_share /etc/NetworkManager/dispatcher.d/30_nfs.sh
+# cp auto_share.sh /etc/NetworkManager/dispatcher.d/30_nfs.sh
 # systemctl start NetworkManger-dispatcher.service
 # systemctl enable NetworkManger-dispatcher.service
 ~~~
 
-* Con esto se consigue que al conectarse o conectarse de la red local, se comprueban los recursos y se actúa en consecuencia.
+* In case of NetworkManager disable or enable your network connection, __auto_share__ script moved to __.../30_nfs.sh__, will be executed.
 
+* Be sure, __auto_share__ and __30_nfs__ has enabled the 'execute permission'.
