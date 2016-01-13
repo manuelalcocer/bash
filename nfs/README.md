@@ -1,6 +1,6 @@
 # Using services and bash script
 
-- Copy __auto_share.sh__ to __/usr/local/bin/auto_share__.
+- Copy __auto_share.sh__ to __/usr/local/bin/auto_share__
 
 - Copy timer and service to __/etc/systemd/system/multi-user.taget.wants/__
 
@@ -12,7 +12,7 @@
 # systemctl start auto_share.timer
 ~~~
 
-* Every minute all NFS shared resources defined on FSTAB will be checked: if not available will be unmounted, if available and not mounted will be mounted, otherwise do nothing.
+* Every minute all NFS shared resources defined on __/etc/fstab__ will be checked: if not available will be unmounted, if available and not mounted will be mounted, otherwise do nothing.
 
 ## NetworkManager-dispatcher
 
