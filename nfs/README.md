@@ -26,4 +26,4 @@
 
 * In case of NetworkManager disable or enable your network connection, __auto_share__ script moved to __.../30_nfs.sh__, will be executed.
 
-* Be sure, __auto_share__ and __30_nfs__ has enabled the 'execute permission'.
+* Be sure, __auto_share__ and __30_nfs__ have enabled the 'execute permission'.
