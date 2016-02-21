@@ -1,5 +1,7 @@
 # Script que calcula la velocidad media de transferencia de red
 
+
+~~~
 #!/usr/bin/env bash
 # 
 # Cáculo aproximado de la velocidad de bajada y subida de la red
@@ -50,3 +52,5 @@ while true; do
     Velocidad
     sleep ${tmuestra}
 done
+
+~~~
