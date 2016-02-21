@@ -43,6 +43,7 @@ function Velocidad(){
     fi
 }
 
+tmuestra=2
 while true; do
     Velocidad
     sleep ${tmuestra}
