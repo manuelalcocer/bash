@@ -2,7 +2,7 @@
 
 - Copy __auto_share.sh__ to __/usr/local/bin/auto_share__
 
-- Copy timer and service to __/etc/systemd/system/multi-user.taget.wants/__
+- Copy timer and service to __/etc/systemd/system/__
 
 - Run:
 
@@ -24,6 +24,6 @@
 # systemctl enable NetworkManger-dispatcher.service
 ~~~
 
-* In case of NetworkManager disable or enable your network connection, __auto_share__ script moved to __.../30_nfs.sh__, will be executed.
+* In case of NetworkManager disables or enables your network connection, __auto_share__ script moved to __.../30_nfs.sh__, will be executed.
 
 * Be sure, __auto_share__ and __30_nfs__ have enabled the 'execute permission'.
