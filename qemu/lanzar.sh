@@ -14,7 +14,7 @@ parametros=("$@")
 
 # si el archivo no acaba en .qcow2, sale (comentar las siguientes 5 líneas si no se quiere esa comprobación)
 extension=${parametros[0]##*.}
-[[ "${extension}" = 'qcow2' ]] || {
+[[ "${extension,,}" = 'qcow2' ]] || {
     echo 'el archivo ha de ser .qcow2' ;
     exit 1 ;
 }
@@ -42,7 +42,7 @@ comando_completo="${comando} ${diskparam} ${comadpar}"
 # Creación del comando completo
 for x in $(seq 0 $((${#parametros[@]} - 2))); do
     MAC=$(echo '02:'$(openssl rand -hex 5 | sed 's/\(..\)/\1:/g; s/.$//'))
-    interfaz=${parametros[(($x+1))]}
+    interfaz=${parametros[((x+1))]}
     parametro_red="-net nic,macaddr=${MAC},model=virtio,netdev=n${x} \
         -netdev tap,id=n${x},ifname=${interfaz},script=no,downscript=no,vhost=on"
     comando_completo="${comando_completo} ${parametro_red}"    
