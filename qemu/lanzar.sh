@@ -30,20 +30,16 @@ archivo_disco=${parametros[0]}
 
 ### Creación del comando a ejecutar, modificar al gusto
 ###
-
 # comando de kvm (cambiar según se use kvm, qemu 32 bits o qemu64 bits)
 comando='qemu-system-x86_64'
-
 # parámetro de disco (modificar si es necesario)
 diskparam="-drive file=${archivo_disco},format=qcow2"
-
 # lista de parámetros adicionales a pasar al comando
-comparamad=('-enable-kvm' '-m 1G' '-boot c')
+comadpar=('-enable-kvm' '-m 1G' '-boot c')
 
-comando_completo="${comando} ${diskparam} ${comparamad}"
+comando_completo="${comando} ${diskparam} ${comadpar}"
 
 # Creación del comando completo
-
 for x in $(seq 0 $((${#parametros[@]} - 2))); do
     MAC=$(echo '02:'$(openssl rand -hex 5 | sed 's/\(..\)/\1:/g; s/.$//'))
     interfaz=${parametros[(($x+1))]}
