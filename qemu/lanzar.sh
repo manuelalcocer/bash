@@ -28,6 +28,14 @@ extension=${parametros[0]##*.}
 # archivo de disco
 archivo_disco=${parametros[0]}
 
+# Puerto de spice
+# instalar netstat previamente
+puertospice=5900
+ipspice=127.0.0.1
+while [[ $(netstat -nlp 2>/dev/null | grep -Ei "${ipspice}:${puertospice}") != '' ]]; do
+    ((puertospice++))
+done
+
 ### Creación del comando a ejecutar, modificar al gusto
 ###
 # comando de kvm (cambiar según se use kvm, qemu 32 bits o qemu64 bits)
@@ -35,7 +43,7 @@ comando='qemu-system-x86_64'
 # parámetro de disco (modificar si es necesario)
 diskparam="-drive file=${archivo_disco},format=qcow2"
 # lista de parámetros adicionales a pasar al comando
-comadpar='-enable-kvm  -m 1G -boot c -vga qxl  -spice port=5900,addr=127.0.0.1,disable-ticketing'
+comadpar="-enable-kvm  -m 1G -boot c -vga qxl -spice port=${puertospice},addr=${ipspice},disable-ticketing"
 
 comando_completo="${comando} ${diskparam} ${comadpar}"
 
@@ -49,5 +57,8 @@ for x in $(seq 0 $((${#parametros[@]} - 2))); do
 done
 
 # ejecución del comando completo
+echo "Puerto de spice: ${puertospice}"
+echo "Ip de spice: ${ipspice}"
+
 $comando_completo
 
