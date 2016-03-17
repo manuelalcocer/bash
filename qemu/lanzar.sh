@@ -8,7 +8,7 @@ parametros=("$@")
 
 # si solo se pone un parámetro, sale
 (( ${#parametros[@]} < 2 )) && {
-    echo 'Se necesitan al menos 2 parámetros: $ lanzar archivo.qcow2 interfaz_de_red' ;
+    echo "Se necesitan al menos 2 parámetros: $ $0 archivo.qcow2 interfaz_de_red" ;
     exit 1 ;
 }
 
