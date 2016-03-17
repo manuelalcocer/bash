@@ -35,7 +35,7 @@ comando='qemu-system-x86_64'
 # parámetro de disco (modificar si es necesario)
 diskparam="-drive file=${archivo_disco},format=qcow2"
 # lista de parámetros adicionales a pasar al comando
-comadpar=('-enable-kvm' '-m 1G' '-boot c')
+comadpar=('-enable-kvm' '-m 1G' '-boot c' '-vga qxl  -spice port=5900,addr=127.0.0.1,disable-ticketing')
 
 comando_completo="${comando} ${diskparam} ${comadpar}"
 
